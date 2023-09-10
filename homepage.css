@@ -1,0 +1,127 @@
+body {
+    background-color: #D8F3DC;
+}
+
+header {
+    background-color: #6c8976;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Times New Roman;
+    height: 120px;
+}
+
+/* Style the logo */
+.logo img {
+    max-width: 100%;
+}
+
+.login {
+    text-align: right;
+    color: white;
+    font-family: Times New Roman;
+    font-size: 15px;
+}
+
+.login a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Set text color */
+    display: flex; /* Use flexbox to align text and icon */
+    align-items: center; /* Align text and icon vertically */
+}
+
+.login a:hover{
+    color: #79b791;
+}
+
+/* Style the icon */
+.icon1 {
+    margin-top: -16px;
+    margin-right: 5px; /* Add spacing between the icon and text */
+    font-size: 20px; /* Set the icon size */
+}
+
+#mySidenav a {
+  position: absolute; /* Position them relative to the browser window */
+  left: -175px; /* Position them outside of the screen */
+  background-color: #6c8976;
+  transition: background-color 0.3s;
+  padding: 15px; /* 15px padding */
+  width: 210px; /* Set a specific width */
+
+  text-decoration: none; /* Remove underline */
+  font-family: Times New Roman;
+  font-size: 20px; /* Increase font size */
+  text-align: left;
+  color: white; /* White text color */
+  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav a:hover {
+  left: 0; /* On mouse-over, make the elements appear as they should */
+  background-color: #79b791;
+  
+}
+
+#menu {
+  top: 205px;
+}
+
+#contact {
+  top: 270px;
+}
+
+#join {
+  top: 333px;
+}
+
+#booking {
+  top: 395px;
+}
+
+#blog {
+  top: 460px;
+}
+
+#testimonial {
+  top: 525px;
+}
+
+#prices {
+  top: 595px;
+}
+
+/* Style the icons */
+.icon {
+    float: right; /* Float the icons to the right */
+    margin-left: 10px; /* Add some margin between the icon and text */
+}
+
+footer {
+    background-color: #6c8976;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto; /* Push the footer to the bottom */
+}
+
+/* Add this CSS to style the social media icons */
+.social-icons {
+    text-align: center;
+    margin-top: 20px; /* Adjust the spacing as needed */
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 30px; /* Adjust the spacing between icons */
+    font-size: 30px; /* Set the icon size */
+    color: white; /* Set the icon color */
+    text-decoration: none;
+}
+
+/* Style the icons on hover if desired */
+.social-icons a:hover {
+    color: #79b791; /* Change color on hover */
+}
