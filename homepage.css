@@ -1,110 +1,131 @@
+/* Reset default margin and padding for body */
 body {
-    background-color: #D8F3DC;
+    margin: 0;
+    padding: 0;
 }
 
+/* Container for the header and image */
+.header-container {
+    position: relative;
+}
+
+/* Style for the header */
 header {
-    background-color: #6c8976;
+    position: fixed; /* Position the header as fixed */
+    top: 0; /* At the top of the viewport */
+    left: 0;
+    width: 100%; /* Take the full width of the viewport */
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Times New Roman;
-    height: 120px;
+    padding: 5px; /* Adjust the padding as needed */
+    transition: all 0.3s ease; /* Add smooth transition for height change */
 }
 
-/* Style the logo */
-.logo img {
-    max-width: 100%;
+/* Style the navigation bar */
+#navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px; /* Add padding for better spacing */
+    z-index: 2; /* Ensure the navigation bar is above the slideshow */
 }
 
-.login {
+/* Style for the logo */
+#logo {
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+}
+
+#navbar-right {
     text-align: right;
-    color: white;
-    font-family: Times New Roman;
-    font-size: 15px;
 }
 
-.login a {
-    text-decoration: none; /* Remove underline */
-    color: white; /* Set text color */
-    display: flex; /* Use flexbox to align text and icon */
-    align-items: center; /* Align text and icon vertically */
+/* Style for the navigation links */
+#navbar-right a {
+    color: white; /* Text color */
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px; /* Adjust the margin as needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Background color with opacity */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners for the background */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
-.login a:hover{
-    color: #79b791;
+/*background color on hover */
+#navbar-right a:hover {
+    background-color: rgba(255, 0, 0, 0.5); /* New background color on hover */
 }
 
-/* Style the icon */
-.icon1 {
-    margin-top: -16px;
-    margin-right: 5px; /* Add spacing between the icon and text */
-    font-size: 20px; /* Set the icon size */
+
+.img1 {
+    width: 100%; /* Set the width to 100% of its parent container */
+    height: 2500px;
+    /* Center and scale the image nicely */
+    background-position: center;
 }
 
-#mySidenav a {
-  position: absolute; /* Position them relative to the browser window */
-  left: -175px; /* Position them outside of the screen */
-  background-color: #6c8976;
-  transition: background-color 0.3s;
-  padding: 15px; /* 15px padding */
-  width: 210px; /* Set a specific width */
-
-  text-decoration: none; /* Remove underline */
-  font-family: Times New Roman;
-  font-size: 20px; /* Increase font size */
-  text-align: left;
-  color: white; /* White text color */
-  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+.img4 {
+    width: 100%; /* Set the width to 100% of its parent container */
+    height: 35%;
+    /* Center and scale the image nicely */
+    background-position: center;
 }
 
-#mySidenav a:hover {
-  left: 0; /* On mouse-over, make the elements appear as they should */
-  background-color: #79b791;
-  
+.mark{
+    width: auto;
+    animation-name: zone;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards
 }
 
-#menu {
-  top: 205px;
+.mark {
+    background-color: #f01e2c; /* red background color */
+    color: #fff; /* White text color */
+    padding: 5px 0; /* Add padding top and bottom */
+    text-align: center; /* Center-align the content */
 }
 
-#contact {
-  top: 270px;
+.bold-text {
+    font-weight: bold;
 }
 
-#join {
-  top: 333px;
+/* Style the .zone container inside .mark */
+.zone {
+    margin: 0 auto; /* Center-align .zone within .mark */
 }
 
-#booking {
-  top: 395px;
+/* Style the spans inside .zone */
+.zone span {
+    display: inline-block;
+    margin: 6px; /* Add spacing between spans */
+    font-size: 20px; /* Adjust font size */
 }
 
-#blog {
-  top: 460px;
+/* Style hover effect for .mark */
+.mark:hover {
+    background-color: #000; /* Black background color */
+    color: #f01e2c; /* red text color on hover */
 }
 
-#testimonial {
-  top: 525px;
+/* Keyframes for text animation */
+@keyframes textAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
-#prices {
-  top: 595px;
-}
-
-/* Style the icons */
-.icon {
-    float: right; /* Float the icons to the right */
-    margin-left: 10px; /* Add some margin between the icon and text */
-}
-
-footer {
-    background-color: #6c8976;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    margin-top: auto; /* Push the footer to the bottom */
+/* Apply animation to .zone span */
+.zone span{
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: textAnimation 3s linear infinite; /* Adjust animation duration as needed */
+    display: inline-block;
+    padding-right: 0px; /* Add spacing between repeated text */
 }
 
 /* Add this CSS to style the social media icons */
@@ -115,13 +136,120 @@ footer {
 
 .social-icons a {
     display: inline-block;
-    margin: 0 30px; /* Adjust the spacing between icons */
+    margin: 0 10px; /* Adjust the spacing between icons */
     font-size: 30px; /* Set the icon size */
-    color: white; /* Set the icon color */
+    color: black; /* Set the icon color */
     text-decoration: none;
 }
 
 /* Style the icons on hover if desired */
 .social-icons a:hover {
     color: #79b791; /* Change color on hover */
+}
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #fff;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f01e2c; 
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 30px;
+}
+
+/* slideshow*/
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  z-index: 1; /* Set a lower z-index to keep it behind the navigation bar */
+  margin-top: 150px; /* Adjust this value to create space below the navbar */
+}
+
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
