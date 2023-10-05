@@ -1,16 +1,6 @@
 body {
-    background-color: #D8F3DC;
-}
-
-header {
-    background-color: #6c8976;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Times New Roman;
-    height: 120px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Style the icon */
@@ -96,3 +86,32 @@ dialog {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
+
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure video covers the entire container */
+    z-index: -1; /* Place the video behind other content */
+}
+
+
+
+
