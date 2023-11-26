@@ -1,116 +1,120 @@
+<?php
+session_start();
+
+// Assuming you have variables with actual values
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Database connection details (replace with your actual details)
+    $host = "localhost";
+    $user = "root";
+    $password_db = "";
+    $database = "fitnessdb";
+
+    // Create connection
+    $conn = new mysqli($host, $user, $password_db, $database);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Use prepared statements to prevent SQL injection
+    $sql = "SELECT user_id, password FROM user_data WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Store the result so we can check if the login is successful
+    $stmt->store_result();
+
+    // If a row is found, it means the username exists
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($user_id, $hashedPassword);
+        $stmt->fetch();
+
+        // Verify the password
+        if (password_verify($password, $hashedPassword)) {
+            // Set the user ID in the session
+            $_SESSION['user_id'] = $user_id;
+
+            // Redirect to the user profile page
+            header("Location: homepage.php");
+            exit();
+        } else {
+            echo "Invalid username or password.";
+        }
+    } else {
+        echo "Invalid username or password.";
+    }
+
+    // Close the connection
+    $stmt->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
-
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>PureGYM</title>
-        
-        <link rel = "stylesheet" type = "text/css" href = "log_in.css"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <!-- Add icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    </head>
-    <body>
-
-        <?php
-      
-       
-        ?>
-        
-        <header>
-            
-            <div class="logo">
-                <img src="logo.png" style="width: 120px; height: 120px; margin-left: 70px;">
-                <h1 style="font-size:300%; margin-top: -90px; margin-left: 230px;">PureGYM</h1>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login </title>
+      <link rel="stylesheet" href="login.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   </head>
+   <body>
+      <div class="video-background">
+         <video autoplay loop muted playsinline>
+            <source src="home1.mp4" type="video/mp4">
+         </video>
+         <div class="content">
+            <header>Login Form</header>
+            <form action="#" method="post">
+               <div class="field">
+                  <span class="fa fa-user"></span>
+                  <input type="text" name="username" required placeholder="Username">
+               </div>
+               <div class="field space">
+                  <span class="fa fa-lock"></span>
+                  <input type="password" name="password" class="pass-key" required placeholder="Password">
+               </div>
+               <div class="pass">
+                  <a href="#">Forgot Password?</a>
+               </div>
+               <div class="field">
+                  <input type="submit" value="LOGIN">
+               </div>
+            </form>
+            <div class="login">
+               Don't have an account?
+               <a href="sign_up.php">Sign Up Now</a>
             </div>
-            
-        </header>
-        <br><br><br>
-        <center><h1> Login Page </h1></center>
-        <form id="loginForm">
-            <div class="user">
-                <center><img src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-vert.png" style="width: 150px; height: 150px;"></center>
-            </div>
-            <br>
-            
-            <div class="container">   
-                <label>Email : </label>   
-                <input type="text" placeholder="Enter Email" name="email" required>  
-                <label>Password : </label>   
-                <input type="password" placeholder="Enter Password" name="password" required>  
-                <button type="submit" onclick="validateAndRedirect()">Login</button>   
-                <input type="checkbox" id="rememberMe"> Remember me    
-                <br><br> Forgot <a href="#"> password</a>?
-            </div>   
-        </form>
-        
-        <script>
-            // Check if username and password should be remembered
-            var rememberMeCheckbox = document.getElementById('rememberMe');
-            var loginForm = document.getElementById('loginForm');
-
-            // Function to set username and password in localStorage
-            function rememberMe() {
-                if (rememberMeCheckbox.checked) {
-                    var email = loginForm.elements['email'].value;
-                    var password = loginForm.elements['password'].value;
-                    localStorage.setItem('rememberedEmail', email);
-                    localStorage.setItem('rememberedPassword', password);
-                } else {
-                    localStorage.removeItem('rememberedEmail');
-                    localStorage.removeItem('rememberedPassword');
-                }
+         </div>
+         <script>
+            const pass_field = document.querySelector('.pass-key');
+            const showBtn = document.querySelector('.show');
+            showBtn.addEventListener('click', function(){
+               if(pass_field.type === "password"){
+                 pass_field.type = "text";
+                 showBtn.style.color = "#3498db";
+               } else {
+                 pass_field.type = "password";
+                 showBtn.style.color = "#222";
+               }
+            });
+            /* Open when someone clicks on the span element */
+            function openNav() {
+              document.getElementById("myNav").style.width = "100%";
             }
-
-            // Load remembered values if they exist
-            var rememberedEmail = localStorage.getItem('rememberedEmail');
-            var rememberedPassword = localStorage.getItem('rememberedPassword');
-            if (rememberedEmail && rememberedPassword) {
-                loginForm.elements['email'].value = rememberedEmail;
-                loginForm.elements['password'].value = rememberedPassword;
-                rememberMeCheckbox.checked = true;
+            /* Close when someone clicks on the "x" symbol inside the overlay */
+            function closeNav() {
+              document.getElementById("myNav").style.width = "0%";
             }
-
-            // Attach the "rememberMe" function to the checkbox's change event
-            rememberMeCheckbox.addEventListener('change', rememberMe);
-            
-            function validateAndRedirect() {
-                // Get form inputs
-                var email = document.forms['loginForm']['email'].value;
-                var password = document.forms['loginForm']['password'].value;
-                
-                // Perform validation (you can add more specific validation rules)
-                if (email === '' || password === '') {
-                    alert('Please fill in all required fields.');
-                } else if (!agreeCheckbox.checked) {
-                    alert('Please agree to the Terms & Privacy.');
-                } else {
-                    // Redirect to the homepage if validation passes
-                    window.location.href = 'homepage.php';
-                }
-            }
-        </script>
-
-        <br><br>
-        <div class="signup">
-            Are you a new user? <a href = "sign_up.php" id="hp">Sign Up</a> Now!
-        </div>
-        
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class="homepage">
-            Back to <a href = "homepage.php" id="hp">Homepage</a>
-        </div>
-        
-        <br><br>
-        <footer>
-            <div class="social-icons">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
-            </div>
-            <p>&copy; 2023 PureGYM</p>
-            
-        </footer>
-    </body>
+         </script>
+      </div>
+   </body>
 </html>

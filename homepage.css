@@ -1,54 +1,28 @@
-/* Reset default margin and padding for body */
 body {
+    background-color: #000; /* Set the background color black */
     margin: 0;
     padding: 0;
-}
-
-/* Container for the header and image */
-.header-container {
-    position: relative;
-}
-
-/* Style for the header */
-header {
-    position: fixed; /* Position the header as fixed */
-    top: 0; /* At the top of the viewport */
-    left: 0;
-    width: 100%; /* Take the full width of the viewport */
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px; /* Adjust the padding as needed */
-    transition: all 0.3s ease; /* Add smooth transition for height change */
+    height: 100%;
+    width: 100%;
+    color: #fff;
 }
 
 /* Style the navigation bar */
 #navbar {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px; /* Add padding for better spacing */
-    z-index: 2; /* Ensure the navigation bar is above the slideshow */
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 10; /* Ensure the navigation bar is above */
 }
 
 /* Style for the logo */
 #logo {
     text-decoration: none;
-    color: black;
+    color: none;
     font-size: 50px;
 }
 
 #navbar-right {
     text-align: right;
-}
-
-/* Style for the navigation links */
-#navbar-right a {
-    color: white; /* Text color */
-    text-decoration: none;
-    font-size: 20px;
-    margin-right: 20px; /* Adjust the margin as needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Background color with opacity */
-    padding: 5px 10px; /* Adjust padding as needed */
-    border-radius: 5px; /* Rounded corners for the background */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    color:#fff;
 }
 
 /*background color on hover */
@@ -56,19 +30,38 @@ header {
     background-color: rgba(255, 0, 0, 0.5); /* New background color on hover */
 }
 
-
-.img1 {
-    width: 100%; /* Set the width to 100% of its parent container */
-    height: 2500px;
-    /* Center and scale the image nicely */
-    background-position: center;
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #fff;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
 }
 
-.img4 {
-    width: 100%; /* Set the width to 100% of its parent container */
-    height: 35%;
-    /* Center and scale the image nicely */
-    background-position: center;
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f01e2c; 
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 30px;
+}
+
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
 }
 
 .mark{
@@ -128,25 +121,43 @@ header {
     padding-right: 0px; /* Add spacing between repeated text */
 }
 
-/* Add this CSS to style the social media icons */
+footer {
+background-color: #ff4d58;
+ color: white;
+ padding: 10px 0;
+ text-align: center;
+ font-size: 15px;
+}
+
 .social-icons {
-    text-align: center;
-    margin-top: 20px; /* Adjust the spacing as needed */
+ text-align: center;
+ margin-top: 20px;
+ color:  #f01e2c;
 }
 
 .social-icons a {
-    display: inline-block;
-    margin: 0 10px; /* Adjust the spacing between icons */
-    font-size: 30px; /* Set the icon size */
-    color: black; /* Set the icon color */
-    text-decoration: none;
+ display: inline-block;
+ margin: 0 15px; /* Adjust the spacing between icons */
+ font-size: 30px;
+ color: black;
+ text-decoration: none;
 }
 
-/* Style the icons on hover if desired */
 .social-icons a:hover {
-    color: #79b791; /* Change color on hover */
+ color: #fff;
+}
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f01e2c; 
 }
 
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 30px;
+}
 /* The Overlay (background) */
 .overlay {
   /* Height & width depends on how you want to reveal the overlay (see JS below) */   
@@ -171,85 +182,73 @@ header {
   margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
 
-/* The navigation links inside the overlay */
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #fff;
-  display: block; /* Display block instead of inline */
-  transition: 0.3s; /* Transition effects on hover (color) */
+
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:70vh;
 }
 
-/* When you mouse over the navigation links, change their color */
-.overlay a:hover, .overlay a:focus {
-  color: #f01e2c; 
+.background-color {
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place it behind the image */
 }
 
-/* Position the close button (top right corner) */
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 30px;
+.header-image {
+    max-width: 100%;
+    max-height: 100%;
 }
 
-/* slideshow*/
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-  z-index: 1; /* Set a lower z-index to keep it behind the navigation bar */
-  margin-top: 150px; /* Adjust this value to create space below the navbar */
+footer {
+   background-color: #ff4d58;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 15px;
 }
 
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
+.social-icons {
+    text-align: center;
+    margin-top: 20px;
+    color:  #f01e2c;
 }
 
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+.social-icons a {
+    display: inline-block;
+    margin: 0 15px; /* Adjust the spacing between icons */
+    font-size: 30px;
+    color: black;
+    text-decoration: none;
 }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+.social-icons a:hover {
+    color: #fff;
 }
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+ header {
+position: fixed; /* Position the header as fixed */
+top: 0; /* At the top of the viewport */
+left: 0;
+width: 100%; /* Take the full width of the viewport */
+background-color: rgba(0, 0, 0, 0.5);
 }
-
-.active, .dot:hover {
-  background-color: #717171;
+#navbar-right a {
+text-decoration: none;
+font-size: 24px;
+color: #fff;
+margin-right: 20px; /* Adjust the margin as needed */
+background-color: transparent; /* Background color with opacity */
+border-radius: 7px; /* Rounded corners for the background */
+transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+span.nav-icon {
+font-size: 28px; /* Set the font size as needed */
+cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+color: #fff; /* Set the color of the icon */
 }

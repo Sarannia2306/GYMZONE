@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.video-background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* Container for the header and image */
+.header-container {
+    position: relative;
+}
+
+/* Style for the header */
+header {
+    position: fixed; /* Position the header as fixed */
+    top: 0; /* At the top of the viewport */
+    left: 0;
+    width: 100%; /* Take the full width of the viewport */
+    background-color: transparent;
+}
+
+/* Style the navigation bar */
+#navbar {
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 11; /* Ensure the navigation bar is above */
+}
+
+/* Style for the logo */
+#logo {
+    text-decoration: none;
+    color: none;
+    font-size: 50px;
+}
+
+#navbar-right {
+    text-align: right;
+    color:#fff;
+}
+
+/* Style for the navigation links */
+#navbar-right a {
+
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px; /* Adjust the margin as needed */
+    color: #fff;
+    background-color: rgba(0, 0, 0, 5); /* Background color with opacity */
+    border-radius: 3px; /* Rounded corners for the background */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/*background color on hover */
+#navbar-right a:hover {
+    background-color: rgba(255, 0, 0, 0.5); /* New background color on hover */
+}
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #fff;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f01e2c; 
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 30px;
+}
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  text-align: center;
+  padding: 60px 32px;
+  width: 370px;
+  transform: translate(-50%,-50%);
+  background: rgba(255,255,255,0.04);
+  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+}
+.content header{
+  color: white;
+  font-size: 33px;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: 'Montserrat',sans-serif;
+}
+.field{
+  position: relative;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  background: rgba(255,255,255,0.94);
+}
+.field span{
+  color: #222;
+  width: 40px;
+  line-height: 45px;
+}
+.field input{
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #222;
+  font-size: 16px;
+  font-family: 'Poppins',sans-serif;
+}
+.space{
+  margin-top: 16px;
+}
+.show{
+  position: absolute;
+  right: 13px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+  display: none;
+  cursor: pointer;
+  font-family: 'Montserrat',sans-serif;
+}
+.pass-key:valid ~ .show{
+  display: block;
+}
+.pass{
+  text-align: left;
+  margin: 10px 0;
+}
+.pass a{
+  color: white;
+  text-decoration: none;
+  font-family: 'Poppins',sans-serif;
+}
+.pass:hover a{
+  text-decoration: underline;
+}
+.field input[type="submit"]{
+  background: transparent;
+  border: none;
+  color: #f01e2c;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat',sans-serif;
+}
+.field input[type="submit"]:hover{
+  background:rgba(255, 0, 0, 0.5);;
+}
+.login{
+  color: white;
+  margin: 20px 0;
+  font-family: 'Poppins',sans-serif;
+}
+.links{
+  display: flex;
+  cursor: pointer;
+  color: #fff;
+  margin: 0 0 20px 0;
+}
+
+.google-btn {
+  width: 190px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+  float: center;
+}
+ .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 0px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: #fff;
+  }
+  
+  .google-icon {
+    position: absolute;
+    margin-top: 8px;
+    margin-left:-11px;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .btn-text {
+    float: right;
+    margin: 14px 14px 0 0;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: "Roboto";
+  }
+  &:hover {
+    box-shadow: 0 0 6px #4285f4;
+  }
+  &:active {
+    background: #1669F2;
+  }
+
+
+.links i{
+  font-size: 17px;
+}
+i span{
+  margin-left: 8px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-family: 'Poppins',sans-serif;
+}
+.signup{
+  font-size: 15px;
+  color: white;
+  font-family: 'Poppins',sans-serif;
+}
+.signup a{
+  color: #3498db;
+  text-decoration: none;
+}
+.signup a:hover{
+  text-decoration: underline;
+}
+

@@ -1,0 +1,183 @@
+body {
+    background-color: #000; /* Set the background color black */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the header and image */
+.header-container {
+    position: relative;
+}
+
+/* Style for the header */
+header {
+    position: fixed; /* Position the header as fixed */
+    top: 0; /* At the top of the viewport */
+    left: 0;
+    width: 100%; /* Take the full width of the viewport */
+    background-color: transparent;
+}
+
+
+/* Style the navigation bar */
+#navbar {
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 11; /* Ensure the navigation bar is above */
+}
+
+/* Style for the logo */
+#logo {
+    text-decoration: none;
+    color: none;
+    font-size: 50px;
+}
+
+#navbar-right {
+    text-align: right;
+    color:#fff;
+}
+/*background color on hover */
+#navbar-right a:hover {
+    background-color: rgba(255, 0, 0, 0.5); /* New background color on hover */
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Adjust the gap between images as needed */
+}
+
+.image {
+    text-align: center; /* Center the image horizontally within each grid cell */
+}
+
+.image img {
+    max-width: 45%;
+    max-height: 45%;
+}
+
+
+.img1 {
+    width: 100%; /* Set the width to 100% of its parent container */
+    height: 2500px;
+    /* Center and scale the image nicely */
+    background-position: center;
+}
+
+.img4 {
+    width: 100%; /* Set the width to 100% of its parent container */
+    height: 20%;
+    /* Center and scale the image nicely */
+    background-position: center;
+}
+
+.mark{
+    width: auto;
+    animation-name: zone;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards
+}
+
+.mark {
+    background-color: #f01e2c; /* red background color */
+    color: #fff; /* White text color */
+    padding: 5px 0; /* Add padding top and bottom */
+    text-align: center; /* Center-align the content */
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+/* Style the .zone container inside .mark */
+.zone {
+    margin: 0 auto; /* Center-align .zone within .mark */
+}
+
+/* Style the spans inside .zone */
+.zone span {
+    display: inline-block;
+    margin: 6px; /* Add spacing between spans */
+    font-size: 20px; /* Adjust font size */
+}
+
+/* Style hover effect for .mark */
+.mark:hover {
+    background-color: #000; /* Black background color */
+    color: #f01e2c; /* red text color on hover */
+}
+
+/* Keyframes for text animation */
+@keyframes textAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Apply animation to .zone span */
+.zone span{
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: textAnimation 3s linear infinite; /* Adjust animation duration as needed */
+    display: inline-block;
+    padding-right: 0px; /* Add spacing between repeated text */
+}
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 30px;
+}
+/* Customize the button style */
+button {
+    background-color: #f01e2c;  /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+     font-size: 20px;
+}
+
+/* Optional: Hover effect */
+button:hover {
+background-color: rgba(255, 0, 0, 0.5); /* Darker shade on hover */
+}
+
+.table-container {
+display: flex;
+justify-content: center;
+padding: 10px;
+}
+table {
+border-collapse: collapse;
+width: 700px; 
+margin: 10px;
+background-color: black; /* Set the background color to black */
+border: 3px solid red; /* Set the outline color to red */
+color: white; /* Set the text color to white */
+ font-size: 24px;
+}
+th{
+height: 50px;
+}
+td{
+height: 400px
+}
+
+table, th, td {
+border: 3px solid red; /* Set the cell borders to red */
+text-align: center;
+}
+h2{
+text-align: center;
+}
+
+th, td {
+padding: 10px;
+}
