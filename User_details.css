@@ -1,0 +1,102 @@
+body {
+    background-color: #f01e2c; 
+}
+
+header {
+    background-color: #f01e2c;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Times New Roman;
+    height: 120px;
+}
+
+/* Style the icon */
+.icon1 {
+    margin-top: 10px;
+    font-size: 20px; /* Set the icon size */
+    display: block; /* Make the icon a block-level element to place it below the text */
+    text-align: center; /* Center the icon horizontally */
+}
+
+footer {
+    background-color: #f01e2c; 
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto; /* Push the footer to the bottom */
+}
+
+/* Add this CSS to style the social media icons */
+.social-icons {
+    text-align: center;
+    margin-top: 20px; /* Adjust the spacing as needed */
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 30px; /* Adjust the spacing between icons */
+    font-size: 30px; /* Set the icon size */
+    color: white; /* Set the icon color */
+    text-decoration: none;
+}
+
+/* Style the icons on hover if desired */
+.social-icons a:hover {
+    color: #79b791; /* Change color on hover */
+}
+
+button {   
+    background-color: red;   
+    width: 100%;  
+    color: white;   
+    padding: 15px;   
+    margin: 10px 0px;   
+    border: none;   
+    cursor: pointer;   
+}   
+
+input[type=text], input[type=number] {   
+    width: 100%;   
+    margin: 8px 0;  
+    padding: 12px 20px;   
+    display: inline-block;   
+    border: 2px solid green;   
+    box-sizing: border-box;   
+}  
+
+button:hover {   
+    opacity: 0.7;   
+}   
+   
+.container {   
+    padding: 25px;
+    margin: 0 auto; /* Set left and right margins to "auto" */
+    max-width: 600px; /* Set a fixed maximum width for the container */
+    background-color:  #B7E4C7;  
+    border: 5px solid green; 
+} 
+
+.homepage {
+    text-align: center;
+}
+
+/* CSS for the dialog element */
+dialog {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+
+
+

@@ -1,3 +1,28 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+$username = 'root';
+$password = 'root';
+
+if (
+    !isset($_SERVER['PHP_AUTH_USER']) ||
+    !isset($_SERVER['PHP_AUTH_PW']) ||
+    $_SERVER['PHP_AUTH_USER'] !== $username ||
+    !password_verify($_SERVER['PHP_AUTH_PW'], $password)
+) {
+    header('WWW-Authenticate: Basic realm="Restricted Area"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Access Denied';
+    exit;
+}
+
+// Redirect to admin_home.php on successful authentication
+header('Location: admin_home.php');
+exit;
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +45,9 @@
     </div>
     <i class='bx bx-chevron-right toggle'></i>
   </header>
+       
+       <div id="notification-container" class="notification-container"></div>
+       
   <div class="menu-bar">
     <div class="menu">
       <ul class="menu-links">
@@ -74,31 +102,48 @@
 
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const body = document.querySelector("body"),
-    sidebar = body.querySelector("nav"),
-    toggle = body.querySelector(".toggle"),
-    searchBtn = body.querySelector(".search-box"),
-    modeSwitch = body.querySelector(".toggle-switch"),
-    modeText = body.querySelector(".mode-text");
+        document.addEventListener("DOMContentLoaded", function () {
+          const body = document.querySelector("body"),
+            sidebar = body.querySelector("nav"),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
 
-  toggle.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-  });
+          toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+          });
 
-  searchBtn.addEventListener("click", () => {
-    sidebar.classList.remove("close");
-  });
+          searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+          });
 
-  modeSwitch.addEventListener("click", () => {
-    body.classList.toggle("dark");
-    if (body.classList.contains("dark")) {
-      modeText.innerText = "Light mode";
-    } else {
-      modeText.innerText = "Dark mode";
-    }
-  });
-});
+          modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            if (body.classList.contains("dark")) {
+              modeText.innerText = "Light mode";
+            } else {
+              modeText.innerText = "Dark mode";
+            }
+          });
+
+            // Function to add a notification
+            function addNotification(message) {
+                const notification = document.createElement("div");
+                notification.classList.add("notification");
+                notification.innerText = message;
+                notificationContainer.appendChild(notification);
+
+                // Automatically remove the notification after a certain time
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000); // Adjust the time as needed (in milliseconds)
+            }
+
+            // Example: Add a notification when the page loads
+            addNotification("Welcome to Admin GYMZONE!");
+        });
+
 </script>
 
 

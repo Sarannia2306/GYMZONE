@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $notificationContent = $_POST['notificationContent'];
 
         // Insert notification into the database
-        $sql = "INSERT INTO Notifications (type, content) VALUES ('Notification', '$notificationContent')";
+        $sql = "INSERT INTO notifications (type, content) VALUES ('Notification', '$notificationContent')";
         $mysqli->query($sql);
 
         header("Location: admin_noti.php?notificationContent=$notificationContent");

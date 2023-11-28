@@ -1,29 +1,4 @@
 <?php
-// Include the user management logic here, such as fetching user data from a database.
-// For simplicity, I'll use a sample array as user data.
-$users = [
-    // User data array
-];
-
-// Include the content management logic here, such as fetching workout videos, class schedules, and blog posts.
-// For simplicity, I'll use sample arrays for demonstration purposes.
-$workoutVideos = [
-    ['title' => 'Full Body Workout', 'url' => 'https://www.example.com/full-body-workout'],
-    ['title' => 'Yoga Tutorial', 'url' => 'https://www.example.com/yoga-tutorial'],
-    // Add more workout video data as needed
-];
-
-$classSchedules = [
-    ['day' => 'Monday', 'time' => '10:00 AM - 11:00 AM', 'class' => 'Cardio'],
-    ['day' => 'Wednesday', 'time' => '2:00 PM - 3:00 PM', 'class' => 'Strength Training'],
-    // Add more class schedule data as needed
-];
-
-$blogPosts = [
-    ['title' => 'Benefits of Regular Exercise', 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...'],
-    ['title' => 'Healthy Eating Habits', 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...'],
-    // Add more blog post data as needed
-];
 
 // Handle form submissions for content management
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,8 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (isset($_POST['action']) && $_POST['action'] == 'addPost') {
         $postTitle = $_POST['postTitle'];
         $postContent = $_POST['postContent'];
-        // Add logic to save the blog post information in the database
-        // For simplicity, we'll just update the local array
         $blogPosts[] = ['title' => $postTitle, 'content' => $postContent];
     }
 }
@@ -167,12 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <button type="submit">Add Video</button>
     </form>
 
-    <ul>
-        <?php foreach ($workoutVideos as $video): ?>
-            <li><a href="<?= $video['url'] ?>" target="_blank"><?= $video['title'] ?></a></li>
-        <?php endforeach; ?>
-    </ul>
-
     <!-- Class Schedules Section -->
     <h2>Class Schedules</h2>
     <form action="admin.php" method="post">
@@ -186,12 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <button type="submit">Update Schedule</button>
     </form>
 
-    <ul>
-        <?php foreach ($classSchedules as $schedule): ?>
-            <li><?= $schedule['day'] ?> - <?= $schedule['time'] ?> - <?= $schedule['class'] ?></li>
-        <?php endforeach; ?>
-    </ul>
-
     <!-- Blog Posts Section -->
     <h2>Blog Posts</h2>
     <form action="admin.php" method="post">
@@ -202,15 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <input type="hidden" name="action" value="addPost">
         <button type="submit">Add Post</button>
     </form>
-
-    <ul>
-        <?php foreach ($blogPosts as $post): ?>
-            <li>
-                <strong><?= $post['title'] ?></strong>
-                <p><?= $post['content'] ?></p>
-            </li>
-        <?php endforeach; ?>
-    </ul>
     
 </body>
 </html>

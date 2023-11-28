@@ -21,9 +21,6 @@
                 <span class="nav-icon" onclick="openNav()">&#9776;</span>
             </div>
             
-            <style>
- 
-            </style>
         </header>
          
         <!-- The overlay -->

@@ -125,7 +125,7 @@
                     <br>
                     <p>Monthly membership is like trial package where you get to try our Virtual Gym for few months.</p>
                     <br>
-                    <button type="button" class="btn btn-outline-danger" onclick="redirectToMonthly()">>Monthly</button></td>
+                    <button type="button" class="btn btn-outline-danger" onclick="redirectToMonthly()">Monthly</button></td>
             </tr>
         </table>
 

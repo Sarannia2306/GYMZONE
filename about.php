@@ -11,90 +11,358 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://js.stripe.com/v3/" async></script>
         
-          <style>
-              
-              .video-container {
-            width: 40%;
-            float: right; /* Float the video container to the right */
-            margin-top: 20px;
-            margin-right: 20px; /* Add margin to create space between the table and video */
-        }
+        <style>
+body {
+ background-color: #000; /* Set the background color black */
+ margin: 0;
+ padding: 0;
+ height: 100%;
+ width: 100%;
+ color: #fff;
+ }
 
-        /* Style for the video itself */
-        video {
-            width: 100%;
-            height: auto;
-        }
-              
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            margin: 10px auto; 
-            color: #f01e2c; 
-            float: left;
-        }
+ /* Container for the header and image */
+ .header-container {
+ position: relative;
+ }
 
-        th, td {
-            border: 1px solid #f01e2c;
-            padding: 10px;
-            text-align: center;
-            font-size: 20px;
-           
-        }
+ /* Style for the header */
+ header {
+ position: fixed; /* Position the header as fixed */
+ top: 0; /* At the top of the viewport */
+ left: 0;
+ width: 100%; /* Take the full width of the viewport */
+ background-color: transparent;
+ }
 
-        th {
-            background-color: #f01e2c;
-        }
-         footer {
-        background-color: #ff4d58;
-         color: white;
-         padding: 10px 0;
-         text-align: center;
-         font-size: 15px;
-        }
+ /* Style the navigation bar */
+ #navbar {
+ background-color: rgba(0, 0, 0, 0);
+ z-index: 11; /* Ensure the navigation bar is above */
+ }
 
-        .social-icons {
-         text-align: center;
-         margin-top: 20px;
-         color:  #f01e2c;
-        }
+ /* Style for the logo */
+ #logo {
+ text-decoration: none;
+ color: none;
+ font-size: 50px;
+ }
 
-        .social-icons a {
-         display: inline-block;
-         margin: 0 15px; /* Adjust the spacing between icons */
-         font-size: 30px;
-         color: black;
-         text-decoration: none;
-        }
+ #navbar-right {
+ text-align: right;
+ color:#fff;
+ }
 
-        .social-icons a:hover {
-         color: #fff;
-        }
-        header {
-        position: fixed; /* Position the header as fixed */
-        top: 0; /* At the top of the viewport */
-        left: 0;
-        width: 100%; /* Take the full width of the viewport */
-        background-color: rgba(0, 0, 0, 0.5);
-        }
-        #navbar-right a {
-        text-decoration: none;
-        font-size: 24px;
-        color: #fff;
-        margin-right: 20px; /* Adjust the margin as needed */
-        background-color: transparent; /* Background color with opacity */
-        border-radius: 7px; /* Rounded corners for the background */
-        transition: background-color 0.3s ease; /* Smooth transition for background color */
-        }
-        span.nav-icon {
-        font-size: 28px; /* Set the font size as needed */
-        cursor: pointer; /* Add a pointer cursor to indicate interactivity */
-        color: #fff; /* Set the color of the icon */
-        }
-       
-            </style>
+ /*background color on hover */
+ #navbar-right a:hover {
+ background-color: rgba(255, 0, 0, 0.5); /* New background color on hover */
+ }
 
+ #navbar-right a {
+ text-decoration: none;
+ font-size: 24px;
+ color: #fff;
+ margin-right: 20px; /* Adjust the margin as needed */
+ background-color: transparent; /* Background color with opacity */
+ border-radius: 7px; /* Rounded corners for the background */
+ transition: background-color 0.3s ease; /* Smooth transition for background color */
+ }
+
+ /* The navigation links inside the overlay */
+ .overlay a {
+ padding: 8px;
+ text-decoration: none;
+ font-size: 36px;
+ color: #fff;
+ display: block; /* Display block instead of inline */
+ transition: 0.3s; /* Transition effects on hover (color) */
+ }
+
+ /* Position the content inside the overlay */
+ .overlay-content {
+ position: relative;
+ top: 25%; /* 25% from the top */
+ width: 100%; /* 100% width */
+ text-align: center; /* Centered text/links */
+ margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+ }
+ /* When you mouse over the navigation links, change their color */
+ .overlay a:hover, .overlay a:focus {
+ color: #f01e2c; 
+ }
+
+ /* Position the close button (top right corner) */
+ .overlay .closebtn {
+ position: absolute;
+ top: 20px;
+ right: 45px;
+ font-size: 30px;
+ }
+ 
+ /* The Overlay (background) */
+ .overlay {
+ /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+ height: 100%;
+ width: 0;
+ position: fixed; /* Stay in place */
+ z-index: 1; /* Sit on top */
+ left: 0;
+ top: 0;
+ background-color: rgb(0,0,0); /* Black fallback color */
+ background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+ overflow-x: hidden; /* Disable horizontal scroll */
+ transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+ }
+
+ /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+ @media screen and (max-height: 450px) {
+ .overlay a {font-size: 20px}
+ .overlay .closebtn {
+ font-size: 40px;
+ top: 15px;
+ right: 35px;
+ }
+ }
+
+ .mark{
+ width: auto;
+ animation-name: zone;
+ animation-duration: 3s;
+ animation-delay: 0s;
+ animation-timing-function: linear;
+ animation-iteration-count: infinite;
+ animation-fill-mode: backwards
+ }
+
+ .mark {
+ background-color: #f01e2c; /* red background color */
+ color: #fff; /* White text color */
+ padding: 5px 0; /* Add padding top and bottom */
+ text-align: center; /* Center-align the content */
+ }
+
+ .bold-text {
+ font-weight: bold;
+ }
+
+ /* Style the .zone container inside .mark */
+ .zone {
+ margin: 0 auto; /* Center-align .zone within .mark */
+ }
+
+ /* Style the spans inside .zone */
+ .zone span {
+ display: inline-block;
+ margin: 6px; /* Add spacing between spans */
+ font-size: 20px; /* Adjust font size */
+ }
+
+ /* Style hover effect for .mark */
+ .mark:hover {
+ background-color: #000; /* Black background color */
+ color: #f01e2c; /* red text color on hover */
+ }
+
+ /* Keyframes for text animation */
+ @keyframes textAnimation {
+ 0% {
+     transform: translateX(0);
+ }
+ 100% {
+     transform: translateX(-100%);
+ }
+ }
+
+ /* Apply animation to .zone span */
+ .zone span{
+ white-space: nowrap; /* Prevent text from wrapping */
+ animation: textAnimation 3s linear infinite; /* Adjust animation duration as needed */
+ display: inline-block;
+ padding-right: 0px; /* Add spacing between repeated text */
+ }
+
+ footer {
+ background-color: #ff4d58;
+ color: white;
+ padding: 10px 0;
+ text-align: center;
+ font-size: 15px;
+ }
+
+ .social-icons {
+ text-align: center;
+ margin-top: 20px;
+ color:  #f01e2c;
+ }
+
+ .social-icons a {
+ display: inline-block;
+ margin: 0 15px; /* Adjust the spacing between icons */
+ font-size: 30px;
+ color: black;
+ text-decoration: none;
+ }
+
+ .social-icons a:hover {
+ color: #fff;
+ }
+ /* When you mouse over the navigation links, change their color */
+ .overlay a:hover, .overlay a:focus {
+ color: #f01e2c; 
+ }
+
+ /* Position the close button (top right corner) */
+ .overlay .closebtn {
+ position: absolute;
+ top: 20px;
+ right: 45px;
+ font-size: 30px;
+ }
+
+.closebtn{
+    font-size: 70px;
+}
+
+span[onclick="openNav()"] {
+    font-size: 4vh; /* Adjust the font size as needed */
+}
+
+.osText{
+  text-align:center;
+    -webkit-text-stroke:3px #f01e2c;
+    position:relative;
+    text-transform:uppercase;
+    color: #252527;
+    font-size: 15vw;
+    letter-spacing: 1.2vw;
+    font-weight: 500;
+    text-shadow:
+        
+        /*text stroke around letters*/
+        0 1px 0 lighten(#252527,17%),
+        -1px -1px 0 lighten(#252527,17%), 
+        
+        /*main 3d shadow*/
+        -1px 0px 0 lighten(#252527,6%), 
+        -2px 1px 0 lighten(#252527,6%), 
+        -3px 2px 0 lighten(#252527,5%), 
+        -4px 3px 0 lighten(#252527,4%), 
+        -5px 4px 0 lighten(#252527,3%), 
+        -6px 5px 0 lighten(#252527,2%), 
+        -7px 6px 0 lighten(#252527,1%), 
+        -8px 7px 0 #252527, 
+        -9px 8px 0 darken(#252527,1%), 
+        -10px 9px 0 darken(#252527,2%), 
+        -11px 10px 0 darken(#252527,3%), 
+        -12px 11px 0 darken(#252527,4%), 
+        -13px 12px 0 darken(#252527,5%), 
+        -14px 13px 0 darken(#252527,6%), 
+        -15px 14px 0 darken(#252527,7%), 
+        -16px 15px 0 darken(#252527,8%),
+        
+        /*top right*/
+        0 -1px 1px white,
+        0 -2px 0px white,        
+        
+        /*bottom left corner*/
+        -15px 14px 0px white,
+        -16px 15px 0px white,
+        -17px 16px 0px white,
+        -18px 17px 0px white,
+        
+        
+        -2px -1px 0 white,
+        -3px -0px 0 white,
+        
+        /*top left corner*/
+        -19px 15px 0 white,
+        -18px 14px 0 white,
+        -17px 13px 0 white,
+        -16px 12px 0 white,
+        -15px 11px 0 white,
+        -14px 10px 0 white,
+        -13px 9px 0 white,
+        -12px 8px 0 white,
+        -11px 7px 0 white,
+        -10px 6px 0 white,
+        -9px 5px 0 white,
+        -8px 4px 0 white,
+        -7px 3px 0 white,
+        -6px 2px 0 white,
+        -5px 1px 0 white,
+        -4px 0px 0 white,
+        
+        /*lower right / (upper right side for capital T like H etc letters. */ 
+        0px 2px 0px white,
+        -1px 3px 0px white,
+        -2px 4px 0px white,
+        -3px 5px 0px white,
+        -4px 6px 0px white,
+        -5px 7px 0px white, 
+        -6px 8px 0px white, 
+        -7px 9px 0px white, 
+        -8px 10px 0px white, 
+        -9px 11px 0px white, 
+        -10px 12px 0px white, 
+        -11px 13px 0px white, 
+        -12px 14px 0px white, 
+        -13px 15px 0px white,
+        -14px 16px 0px white,
+        -15px 17px 0px white;
+  
+}
+
+
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 700px;
+    margin: 10px;
+    background-color: black; /* Set the background color to black */
+    border: 3px solid red; /* Set the outline color to red */
+    color: white; /* Set the text color to white */
+    font-size: 24px;
+}
+
+td {
+    height: 400px;
+}
+
+table,
+th,
+td {
+    border: 3px solid red; /* Set the cell borders to red */
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+ .video-container {
+width: 40%;
+float: right; /* Float the video container to the right */
+margin-top: 680px;
+margin-right: 20px; /* Add margin to create space between the table and video */
+}
+
+/* Style for the video itself */
+video {
+width: 100%;
+height: auto;
+}
+        </style>
          </head>
     <body>
         

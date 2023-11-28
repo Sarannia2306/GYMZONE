@@ -121,14 +121,6 @@ body {
     padding-right: 0px; /* Add spacing between repeated text */
 }
 
-footer {
-background-color: #ff4d58;
- color: white;
- padding: 10px 0;
- text-align: center;
- font-size: 15px;
-}
-
 .social-icons {
  text-align: center;
  margin-top: 20px;
@@ -181,8 +173,6 @@ background-color: #ff4d58;
   text-align: center; /* Centered text/links */
   margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
-
-
 
 .image-container {
     display: flex;
@@ -238,6 +228,7 @@ left: 0;
 width: 100%; /* Take the full width of the viewport */
 background-color: rgba(0, 0, 0, 0.5);
 }
+
 #navbar-right a {
 text-decoration: none;
 font-size: 24px;
@@ -247,6 +238,7 @@ background-color: transparent; /* Background color with opacity */
 border-radius: 7px; /* Rounded corners for the background */
 transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
+
 span.nav-icon {
 font-size: 28px; /* Set the font size as needed */
 cursor: pointer; /* Add a pointer cursor to indicate interactivity */
@@ -255,12 +247,46 @@ color: #fff; /* Set the color of the icon */
 
 .notification-container {
 position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-background-color: #f01e2c;
-color: #fff;
-text-align: center;
-padding: 10px;
-display: none; /* Hide by default */
+top: 60%;
+left: 40%;
+transform: translate(-50%, -50%);
+width: 80%;
+max-width: 800px; /* Adjust the maximum width as needed */
+max-height: 400px; /* Set a maximum height for the container */
+display: flex; /* Use flexbox to enable side-by-side layout */
+}
+
+.announcement-container {
+    background-color: #f01e2c;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    flex: 1; /* Let the container take remaining space */
+    margin-left: 25px; /* Adjust the margin between containers */
+}
+
+.notification-item {
+    background-color: #ccc;
+    color: #000;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    flex: 1; /* Let the container take remaining space */
+}
+
+.notification-item p {
+    margin: 0;
+}
+
+.notification-item p+p {
+    margin-top: 10px;
+}
+
+.notification-item h3 {
+    margin-bottom: 5px;
+}
+
+.notification-item small {
+    font-style: italic;
 }

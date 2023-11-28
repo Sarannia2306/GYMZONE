@@ -15,7 +15,9 @@ session_start();
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
        
         </head> 
-        
+        <body>
+            
+     
         <header>
             <a href="homepage.php" id="logo"><img src="gymZONE.jpg" style="width: 100px; height: 85px;"></a>
             <div id="navbar-right">
@@ -26,14 +28,12 @@ session_start();
                 <span class="nav-icon" onclick="openNav()">&#9776;</span>
             </div>
         </header>
-
-    <body>
-
-        
+            
        <div class="image-container">
             <div class="background-color"></div>
             <img src="head.jpg" class="header-image">
         </div>
+        
        
         <!-- The overlay -->
         <div id="myNav" class="overlay">
@@ -45,8 +45,9 @@ session_start();
                 <a href="about.php">OUR STORY</a>
                 <a href="membership.php">MEMBERSHIP</a>
                 <a href="testimonial.php">TESTIMONIAL</a>
+                
                  <?php
-               if (isset($_SESSION['user_id'])) {
+               if (isset($_SESSION['id'])) {
                 // If user is logged in, display "LOG OUT" and "PROFILE"
                 echo '<a href="log_out.php">LOG OUT</a>';
                 echo '<a href="user_profile.php">PROFILE</a>';
@@ -100,6 +101,6 @@ session_start();
 </footer>
 
 
+        </body>
 
-    </body>
 </html>

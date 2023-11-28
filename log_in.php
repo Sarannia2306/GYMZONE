@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Use prepared statements to prevent SQL injection
-    $sql = "SELECT user_id, password FROM user_data WHERE username = ?";
+    $sql = "SELECT id, password FROM user_data WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
 
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify the password
         if (password_verify($password, $hashedPassword)) {
             // Set the user ID in the session
-            $_SESSION['user_id'] = $user_id;
+            $_SESSION['id'] = $user_id;
 
             // Redirect to the user profile page
             header("Location: homepage.php");
